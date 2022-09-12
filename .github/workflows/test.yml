@@ -7,8 +7,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-  steps:
-    - name: Echo the name
-      run: |
-        export NAME=Coco
-        echo $NAME
+    steps:
+      - name: Echo the name
+        run: |
+          export NAME=Coco
+          echo $NAME
