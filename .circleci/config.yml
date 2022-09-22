@@ -7,8 +7,8 @@ jobs:
 
     steps:
       - checkout
-      - run: run install
-      - run: run build
+      - run: npm install
+      - run: npm run build
       - run: npm test
 
 workflows:
