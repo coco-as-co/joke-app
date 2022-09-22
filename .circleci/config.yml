@@ -2,9 +2,10 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.0.2
+  heroku: circleci/heroku@1.2.6
 
 workflows:
-  build:
+  build-test-deploy:
     jobs:
       - node/run:
           npm-run: build
@@ -12,9 +13,18 @@ workflows:
             branches:
               only:
                 - circleci
+
       - node/test:
+          filters:
+            branches:
+              only:
+                - circleci
+
+      - heroku/deploy-via-git:
           requires:
-            - 'node/run'
+            - node/run
+            - node/test
+          app-name: 'first-ci-cd-1'
           filters:
             branches:
               only:
