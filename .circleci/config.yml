@@ -24,7 +24,14 @@ jobs:
 workflows:
   build:
     jobs:
-      - build-test:
+      - node/run:
+          npm-run: build
+          filters:
+            branches:
+              only:
+                - circleci
+      - node/test:
+          test-results-for: jest
           filters:
             branches:
               only:
